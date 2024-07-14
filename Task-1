@@ -1,0 +1,36 @@
+def display_menu():
+    print("\nTask Manager")
+    print("1. Add Task")
+    print("2. Complete Task")
+    print("3. Remove Task")
+    print("4. View Tasks")
+    print("5. Exit")
+
+def add_task(tasks):
+    task = input("Enter the task: ")
+    tasks.append({"task": task, "completed": False})
+    print(f'Task "{task}" added!')
+
+def complete_task(tasks):
+    view_tasks(tasks)
+    if tasks:
+        task_num = int(input("Enter the number of the task to complete: "))
+        if 0 < task_num <= len(tasks):
+            tasks[task_num - 1]["completed"] = True
+            print(f'Task "{tasks[task_num - 1]["task"]}" marked as completed!')
+        else:
+            print("Invalid task number!")
+    else:
+        print("No tasks to complete!")
+
+def remove_task(tasks):
+    view_tasks(tasks)
+    if tasks:
+        task_num = int(input("Enter the number of the task to remove: "))
+        if 0 < task_num <= len(tasks):
+            removed_task = tasks.pop(task_num - 1)
+            print(f'Task "{removed_task["task"]}" removed!')
+        else:
+            print("Invalid task number!")
+    else:
+        print("No tasks to remove!")
